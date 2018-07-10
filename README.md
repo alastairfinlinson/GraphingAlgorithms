@@ -2,9 +2,9 @@
 Test of 3 simply greedy algorithms.
 
 This project is being developed in C# using WPF to test 3 algorithms for resolving graphs. These algorithms are as follow:
-  - Kurskal's
-  - Prim's
-  - Dijkstra's
+  - Kurskals'
+  - Prims'
+  - Dijkstras'
 
 The backend design is using implementation of the IResolver interface where the work for resolving will be done. 
 
