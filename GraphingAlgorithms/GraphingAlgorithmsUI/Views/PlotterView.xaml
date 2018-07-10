@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="GraphingAlgorithmsUI.Views.PlotterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GraphingAlgorithmsUI.Converters"
+             mc:Ignorable="d"
+             d:DesignHeight ="100"
+             d:DesignWidth ="100"
+             xmlns:cal="http://www.caliburnproject.org">
+    <Control.Resources>
+        <local:MarginConverter x:Key="MarginConverter"/>
+    </Control.Resources>
+    <Button cal:Message.Attach="[Event Click] = [Action OnCanvasClick($eventArgs)]">
+        <ItemsControl Margin="20,5" ItemsSource="{Binding Nodes}" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Ellipse Height="3" Width="3" Fill="Red">
+                        <Ellipse.Margin>
+                            <MultiBinding Converter="{StaticResource MarginConverter}">
+                                <MultiBinding.Bindings>
+                                    <Binding Path="Point.X"/>
+                                    <Binding Path="Point.Y"/>
+                                </MultiBinding.Bindings>
+                            </MultiBinding>
+                        </Ellipse.Margin>
+                    </Ellipse>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Button>
+    
+</UserControl>

@@ -1,0 +1,42 @@
+﻿<controls:MetroWindow
+        x:Class="GraphingAlgorithmsUI.Views.MainWindowView"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"     
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conveters="clr-namespace:GraphingAlgorithmsUI.Converters"
+        xmlns:views="clr-namespace:GraphingAlgorithmsUI.Views"
+        xmlns:cal="http://www.caliburnproject.org"
+    mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <controls:MetroWindow.Resources>
+        <conveters:MarginConverter x:Key="MarginConverter"/>
+    </controls:MetroWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid ShowGridLines="True" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <views:GraphDisplayView Grid.Column="0" DataContext="{Binding PrimsGraphViewModel}"/>
+            <views:GraphDisplayView Grid.Column="1" DataContext="{Binding KurskalsGraphViewModel}"/>
+            <views:GraphDisplayView Grid.Column="2" DataContext="{Binding DijkstrasGraphViewModel}"/>
+        </Grid>
+        <Grid Grid.Row="1" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <views:PlotterView DataContext="{Binding PlotterViewModel}" Grid.Column="1"/>
+            
+        </Grid>
+    </Grid>
+</controls:MetroWindow>
